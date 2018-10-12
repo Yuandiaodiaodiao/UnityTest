@@ -21,7 +21,7 @@ public class Groudtest : MonoBehaviour {
         }
 
     }
-    void OnTriggerExit2D(Collider other)
+    void OnTriggerExit(Collider other)
     {
         if (other.tag == "ground")
         {
