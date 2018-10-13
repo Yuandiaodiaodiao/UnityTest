@@ -245,17 +245,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1002694366023500}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e14f47362c396764b993cc686d267324, type: 3}
+  m_Script: {fileID: 11500000, guid: 955301b846f5dd348b257b02a0211e83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpspeed: 10
-  walllayer:
-    serializedVersion: 2
-    m_Bits: 0
   speed: 10
-  knockg: 0
-  playerheight: 10
-  rotateSpeed: 0
+  moveDirection: 0
 --- !u!212 &212079128306354094
 SpriteRenderer:
   m_ObjectHideFlags: 1
