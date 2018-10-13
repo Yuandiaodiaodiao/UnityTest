@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Groudtest : MonoBehaviour {
+public class GroudTest : MonoBehaviour {
     public bool is_onground;
 	// Use this for initialization
 	void Start () {

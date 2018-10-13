@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class knocktest : MonoBehaviour {
+public class KnockTest : MonoBehaviour {
 	public bool onknock;
 	// Use this for initialization
 	void Start () {

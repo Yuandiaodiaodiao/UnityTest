@@ -16,8 +16,7 @@ public class MoveObj : MonoBehaviour
     private int turns1;
     [SerializeField] private float knockg;
     [SerializeField] private float playerheight;
-    private bool isRotating;//正在旋转  加锁
-    [SerializeField] private float rotateSpeed;//旋转速度 0.x秒旋转完成
+  
     // Use this for initialization
     void Start() {
         ifjump = false;
@@ -32,7 +31,7 @@ public class MoveObj : MonoBehaviour
     }
     // Update is called once per frame
     void Update() {
-        rotate();
+     
         //   Debug.Log(EditorUserBuildSettings.activeBuildTarget);
         //   Debug.Log(BuildTarget.WebGL);
         //  Debug.Log(BuildTarget.Android);
@@ -52,23 +51,7 @@ public class MoveObj : MonoBehaviour
 
         movec();
     }
-    void rotate() {
-        //旋转角色
-
-        if (isRotating) {//正在旋转
-
-        }
-        else {
-
-            bool onButtonQ = CrossPlatformInputManager.GetButtonDown("Q");//侧向移动
-            bool onButtonE = CrossPlatformInputManager.GetButtonDown("E");//纵向
-            if (onButtonQ) {
-                Debug.Log("Q");
-                transform.Rotate(new Vector3(0, 5, 0));
-            }
-        }
-
-    }
+   
     void movec() {
 
 
@@ -116,7 +99,7 @@ public class MoveObj : MonoBehaviour
     }
 
     bool ifknock() {
-        return GetComponentInChildren<knocktest>().onknock;
+        return GetComponentInChildren<KnockTest>().onknock;
     }
     bool ifground() {
         /*	RaycastHit2D ray = Physics2D.Raycast (transform.position, -transform.up, playerheight, walllayer);
@@ -124,6 +107,6 @@ public class MoveObj : MonoBehaviour
             if (ray.collider != null)
                 return true;
             return false;*/
-        return GetComponentInChildren<Groudtest>().is_onground;
+        return GetComponentInChildren<GroudTest>().is_onground;
     }
 }
