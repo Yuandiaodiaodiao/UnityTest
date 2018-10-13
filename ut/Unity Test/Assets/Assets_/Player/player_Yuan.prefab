@@ -73,8 +73,8 @@ GameObject:
   - component: {fileID: 4023532558587474}
   - component: {fileID: 212737178523763760}
   - component: {fileID: 54047164733135290}
-  - component: {fileID: 114285651670569954}
   - component: {fileID: 114234936231206510}
+  - component: {fileID: 114651321122959396}
   m_Layer: 0
   m_Name: player_Yuan
   m_TagString: Untagged
@@ -212,16 +212,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b00aefb9c6b4554d8db6164cb1251fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpspeed: 10
-  walllayer:
-    serializedVersion: 2
-    m_Bits: 0
-  speed: 10
-  knockg: 0
-  playerheight: 10
+  player: {fileID: 0}
 --- !u!114 &114651321122959396
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1797058845096704}
@@ -379,6 +373,6 @@ SpriteRenderer:
   m_Size: {x: 0.98, y: 0.99}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
