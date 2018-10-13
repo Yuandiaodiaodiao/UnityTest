@@ -6,11 +6,10 @@ public class cameraLink : MonoBehaviour
 {
     public Transform followTarget;
     public float cameraDist;
-    private float rotateDegree;
+
     // Use this for initialization
     void Start()
     {
-        rotateDegree = 0;
 
     }
 
@@ -18,7 +17,6 @@ public class cameraLink : MonoBehaviour
     void Update()
     {
 
-        rotateDegree += 0.01f;
         transform.position = followTarget.position + cameraDist  *(Quaternion.AngleAxis(-30, followTarget.right) * followTarget.forward);
         transform.rotation = Quaternion.LookRotation(followTarget.position - transform.position);
     }

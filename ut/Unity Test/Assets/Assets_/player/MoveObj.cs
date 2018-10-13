@@ -16,64 +16,66 @@ public class MoveObj : MonoBehaviour
     private int turns1;
     [SerializeField] private float knockg;
     [SerializeField] private float playerheight;
+    private bool isRotating;//正在旋转  加锁
+    [SerializeField] private float rotateSpeed;//旋转速度 0.x秒旋转完成
     // Use this for initialization
-    void Start()
-    {
+    void Start() {
         ifjump = false;
         rig3d = GetComponent<Rigidbody>();
         jumptimes = 0;
         turns1 = 0;
     }
-    float Abs(float x)
-    {
+    float Abs(float x) {
         if (x >= 0)
             return x;
         return -x;
     }
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         rotate();
         //   Debug.Log(EditorUserBuildSettings.activeBuildTarget);
         //   Debug.Log(BuildTarget.WebGL);
         //  Debug.Log(BuildTarget.Android);
         //Debug.Log(BuildTarget.);
         bool onwebgl = false;
-        if (onwebgl)
-        {
+        if (onwebgl) {
             float movey = CrossPlatformInputManager.GetAxis("Vertical");
             if (movey > 0.5f && jumptimes <= 1) ifjump = true;
         }
         else
-        if (CrossPlatformInputManager.GetButtonDown("Jump") && jumptimes <= 1)
-        {
+        if (CrossPlatformInputManager.GetButtonDown("Jump") && jumptimes <= 1) {
 
             ifjump = true;
         }
     }
-    void FixedUpdate()
-    {
-        
+    void FixedUpdate() {
+
         movec();
     }
     void rotate() {
         //旋转角色
-        bool onButtonQ = CrossPlatformInputManager.GetButtonDown("Q");//侧向移动
-        bool onButtonE = CrossPlatformInputManager.GetButtonDown("E");//纵向
-        if (onButtonQ) {
-            Debug.Log("Q");
-            transform.Rotate(new Vector3(0, 5, 0));
+
+        if (isRotating) {//正在旋转
+
         }
+        else {
+
+            bool onButtonQ = CrossPlatformInputManager.GetButtonDown("Q");//侧向移动
+            bool onButtonE = CrossPlatformInputManager.GetButtonDown("E");//纵向
+            if (onButtonQ) {
+                Debug.Log("Q");
+                transform.Rotate(new Vector3(0, 5, 0));
+            }
+        }
+
     }
-    void movec()
-    {
-      
+    void movec() {
+
 
         Vector3 v = rig3d.velocity;
         if (ifground())
             jumptimes = 0;
-        if (ifjump)
-        {
+        if (ifjump) {
             if (!ifground())
                 jumptimes++;
             ifjump = false;
@@ -83,7 +85,7 @@ public class MoveObj : MonoBehaviour
         }
         movex = CrossPlatformInputManager.GetAxisRaw("Horizontal");//侧向移动
         movez = CrossPlatformInputManager.GetAxisRaw("Vertical");//纵向
-        
+
 
         Vector3 last_size = transform.localScale;
         v.x = 0;
@@ -91,16 +93,15 @@ public class MoveObj : MonoBehaviour
         if (Math.Abs(movex) > 0.2)//输入死区
         {
             Debug.Log(transform.right);
-            v += transform.right * movex / Math.Abs(movex) * -1*speed;
+            v += transform.right * movex / Math.Abs(movex) * -1 * speed;
         }
         if (Math.Abs(movez) > 0.2)//输入死区
         {
-            v += transform.forward * movez / Math.Abs(movez) *-1*speed;
+            v += transform.forward * movez / Math.Abs(movez) * -1 * speed;
         }
-        
+
         //rig2d.velocity = new Vector2 (speed*movex, rig2d.velocity.y);
-        if (ifknock())
-        {/*
+        if (ifknock()) {/*
 			if (turns1 == 10) {
 				turns1 = 0;
 			} else {*/
@@ -114,12 +115,10 @@ public class MoveObj : MonoBehaviour
         rig3d.velocity = v;
     }
 
-    bool ifknock()
-    {
+    bool ifknock() {
         return GetComponentInChildren<knocktest>().onknock;
     }
-    bool ifground()
-    {
+    bool ifground() {
         /*	RaycastHit2D ray = Physics2D.Raycast (transform.position, -transform.up, playerheight, walllayer);
             Debug.DrawLine (transform.position, transform.position + new Vector3 (0f, -playerheight, 0f), Color.red);
             if (ray.collider != null)
