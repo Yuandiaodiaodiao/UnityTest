@@ -199,9 +199,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d56b3a3ca70e90844977f5a23be31740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD:ut/Unity Test/Assets/Assets_/Player/player_Yuan.prefab
   rotateSpeed: 0.5
   rotateAngel: 45
 --- !u!114 &114264560769877428
+=======
+  jumpspeed: 10
+  walllayer:
+    serializedVersion: 2
+    m_Bits: 0
+  speed: 10
+  knockg: 0
+  playerheight: 10
+  rotateSpeed: 0
+--- !u!114 &114651321122959396
+>>>>>>> origin/cy:ut/Unity Test/Assets/Assets_/player/player.prefab
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -212,14 +224,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b00aefb9c6b4554d8db6164cb1251fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpspeed: 10
-  walllayer:
-    serializedVersion: 2
-    m_Bits: 0
-  speed: 10
-  knockg: 0
-  playerheight: 10
---- !u!114 &114651321122959396
+  player: {fileID: 1797058845096704}
+--- !u!114 &114285651670569954
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
