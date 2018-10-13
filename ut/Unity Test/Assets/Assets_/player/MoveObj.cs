@@ -62,7 +62,7 @@ public class MoveObj : MonoBehaviour
         bool onButtonE = CrossPlatformInputManager.GetButtonDown("E");//纵向
         if (onButtonQ) {
             Debug.Log("Q");
-            transform.Rotate(new Vector3(0, 90, 0));
+            transform.Rotate(new Vector3(0, 5, 0));
         }
     }
     void movec()
