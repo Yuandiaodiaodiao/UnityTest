@@ -11,8 +11,7 @@ public class RotateObj : MonoBehaviour
     private float rotateDirection;//旋转方向
     private float lastAngel;//剩余旋转角度
     void Start() {
-        isRotating = false;
-        lastAngel = 0f;
+        isRotating = false;//初始不旋转
     }
 
     // Update is called once per frame
@@ -23,31 +22,36 @@ public class RotateObj : MonoBehaviour
         //旋转角色
 
         if (isRotating) {//正在旋转
-            float rotateA = rotateAngel / (rotateSpeed / (1f / 60f));
-            if (rotateA <= lastAngel)
+            float rotateA = rotateAngel / (rotateSpeed / (1f / 60f));//算出每帧角度移动
+            if (rotateA <= lastAngel)//旋转对应角度
                 transform.Rotate(new Vector3(0, rotateDirection * rotateA, 0));
             else {
+                //最后一次旋转 
                 transform.Rotate(new Vector3(0, rotateDirection * lastAngel, 0));
-                isRotating = false;
+                isRotating = false;//旋转结束
             }
+            //修改剩余旋转值
             lastAngel -= rotateA;
         }
-        else {
+        else {//非旋转状态 准备接受键盘输入
 
-            bool onButtonQ = CrossPlatformInputManager.GetButtonDown("Q");//侧向移动
-            bool onButtonE = CrossPlatformInputManager.GetButtonDown("E");//纵向
+            bool onButtonQ = CrossPlatformInputManager.GetButtonDown("Q");//逆时针
+            bool onButtonE = CrossPlatformInputManager.GetButtonDown("E");//顺时针
             if (onButtonQ) {
                 Debug.Log("Q");
+                //下一帧 开启旋转
+                //设定旋转方向
+                //设置剩余旋转角度 下同
                 isRotating = true;
                 rotateDirection = 1f;
-                lastAngel = 45f;
+                lastAngel = rotateAngel;
             }
             else {
                 if (onButtonE) {
                     Debug.Log("E");
                     isRotating = true;
                     rotateDirection = -1f;
-                    lastAngel = 45f;
+                    lastAngel = rotateAngel;
                 }
             }
         }
