@@ -43,14 +43,14 @@ public class RotateObj : MonoBehaviour
                 //设定旋转方向
                 //设置剩余旋转角度 下同
                 isRotating = true;
-                rotateDirection = 1f;
+                rotateDirection = -1f;
                 lastAngel = rotateAngel;
             }
             else {
                 if (onButtonE) {
                     Debug.Log("E");
                     isRotating = true;
-                    rotateDirection = -1f;
+                    rotateDirection = 1f;
                     lastAngel = rotateAngel;
                 }
             }
