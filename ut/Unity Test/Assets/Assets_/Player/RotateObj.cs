@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using UnityStandardAssets.CrossPlatformInput;
 
 public class RotateObj : MonoBehaviour
@@ -23,6 +24,7 @@ public class RotateObj : MonoBehaviour
 
         if (isRotating) {//正在旋转
             float rotateA = rotateAngel / (rotateSpeed / (1f / 60f));//算出每帧角度移动
+            rotateA += 1.5f*AngelFix(lastAngel, rotateAngel);
             if (rotateA <= lastAngel)//旋转对应角度
                 transform.Rotate(new Vector3(0, rotateDirection * rotateA, 0));
             else {
@@ -56,5 +58,17 @@ public class RotateObj : MonoBehaviour
             }
         }
 
+    }
+
+    float AngelFix(float last,float all ) {
+        //旋转修正为cos
+        float x = last / all;
+        float fx = -4 * (x * x) + 4 * x-1;
+
+        return float.Parse((fx).ToString());
+
+        //三角函数映射
+        //double mapY = Math.PI * 2 * finishPct;
+        //return float.Parse((-Math.Cos(mapY)).ToString());
     }
 }
