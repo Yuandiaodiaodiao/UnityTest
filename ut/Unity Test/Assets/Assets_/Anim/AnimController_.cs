@@ -12,18 +12,18 @@ Function:
 */
 public class AnimController_ : MonoBehaviour {
 
-    public Animator Anim;
-    private MoveObj temp; 
+    public Animator Anim;//控制器
+    private MoveObj State; //当前的状态
 	void Start (){
-        temp = GetComponentInParent<MoveObj>();
+        State = GetComponentInParent<MoveObj>();
 	}
 	void Update () {
-        int MoveState = temp.MoveCheck();
+        int MoveState = State.MoveCheck();//获得当前的移动状态
         bool is_move = false;
         if (MoveState != 0)
-            is_move = true;
+            is_move = true;//不为零代表移动
         Debug.Log(is_move);
-        Anim.SetBool("IsMove",is_move);
+        Anim.SetBool("IsMove",is_move);//修改动画参数
     }
 	
 	void FixedUpdate() {
